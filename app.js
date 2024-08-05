@@ -1,10 +1,10 @@
-const express = require('express');
-const swaggerUi = require('swagger-ui-express');
-const swaggerJsdoc = require('swagger-jsdoc');
-const routes = require('./routes');
-const errorHandler = require('./middleware/error-handler');
-const app = express();
-const PORT = process.env.PORT || 3000;
+const express = require('express')
+const swaggerUi = require('swagger-ui-express')
+const swaggerJsdoc = require('swagger-jsdoc')
+const routes = require('./routes')
+const errorHandler = require('./middleware/error-handler')
+const app = express()
+const PORT = process.env.PORT || 3000
 
 const options = {
   definition: {
@@ -12,7 +12,8 @@ const options = {
     info: {
       title: 'Weather Cache API',
       version: '1.0.0',
-      description: 'API для кеширования данных о погоде. Работает с внешним API [Open-Meteo](https://open-meteo.com/). Запрашивает данные о погоде с переданными долготой и широтой требуемого местоположения, для которого необходимо узнать погоду, с сохранением данных в кеш.',
+      description:
+        'API для кеширования данных о погоде. Работает с внешним API [Open-Meteo](https://open-meteo.com/). Запрашивает данные о погоде с переданными долготой и широтой требуемого местоположения, для которого необходимо узнать погоду, с сохранением данных в кеш.',
     },
     servers: [
       {
@@ -22,15 +23,15 @@ const options = {
     ],
   },
   apis: ['./controllers/*.js'],
-};
+}
 
-const specs = swaggerJsdoc(options);
+const specs = swaggerJsdoc(options)
 
-app.use(express.json());
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(specs));
-app.use('/api', routes);
-app.use(errorHandler);
+app.use(express.json())
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(specs))
+app.use('/api', routes)
+app.use(errorHandler)
 
 app.listen(PORT, () => {
-  console.log(`Сервер запущен на порту ${PORT}`);
-});
+  console.log(`Сервер запущен на порту ${PORT}`)
+})

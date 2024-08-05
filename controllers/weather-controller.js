@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
-const weatherService = require('../services/weather-service');
-const cacheService = require('../services/cache-service');
+const express = require('express')
+const router = express.Router()
+const weatherService = require('../services/weather-service')
+const cacheService = require('../services/cache-service')
 
 /**
  * @swagger
@@ -32,16 +32,21 @@ const cacheService = require('../services/cache-service');
  */
 router.get('/', async (req, res, next) => {
   try {
-    const { latitude, longitude } = req.query;
+    const { latitude, longitude } = req.query
     if (!latitude || !longitude) {
-      return res.status(400).json({ error: 'Широта и долгота обязательны' });
+      return res
+        .status(400)
+        .json({ error: 'Широта и долгота обязательны' })
     }
-    const data = await weatherService.getWeather(latitude, longitude);
-    res.json(data);
+    const data = await weatherService.getWeather(
+      latitude,
+      longitude,
+    )
+    res.json(data)
   } catch (error) {
-    next(error);
+    next(error)
   }
-});
+})
 
 /**
  * @swagger
@@ -57,12 +62,12 @@ router.get('/', async (req, res, next) => {
  */
 router.delete('/cache', (req, res, next) => {
   try {
-    cacheService.clearCache();
-    res.status(200).json({ message: 'Кеш очищен' });
+    cacheService.clearCache()
+    res.status(200).json({ message: 'Кеш очищен' })
   } catch (error) {
-    next(error);
+    next(error)
   }
-});
+})
 
 /**
  * @swagger
@@ -89,16 +94,20 @@ router.delete('/cache', (req, res, next) => {
  */
 router.post('/cache/size', (req, res, next) => {
   try {
-    const { size } = req.body;
+    const { size } = req.body
     if (!size || typeof size !== 'number') {
-      return res.status(400).json({ error: 'Размер должен быть числом' });
+      return res
+        .status(400)
+        .json({ error: 'Размер должен быть числом' })
     }
-    cacheService.setCacheSize(size);
-    res.status(200).json({ message: 'Размер кеша обновлен' });
+    cacheService.setCacheSize(size)
+    res
+      .status(200)
+      .json({ message: 'Размер кеша обновлен' })
   } catch (error) {
-    next(error);
+    next(error)
   }
-});
+})
 
 /**
  * @swagger
@@ -127,11 +136,11 @@ router.post('/cache/size', (req, res, next) => {
  */
 router.get('/cache/status', (req, res, next) => {
   try {
-    const status = cacheService.getCacheStatus();
-    res.json(status);
+    const status = cacheService.getCacheStatus()
+    res.json(status)
   } catch (error) {
-    next(error);
+    next(error)
   }
-});
+})
 
-module.exports = router;
+module.exports = router
