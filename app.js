@@ -2,7 +2,7 @@ const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const routes = require('./routes');
-const errorHandler = require('./middleware/error');
+const errorHandler = require('./middleware/error-handler');
 const app = express();
 const PORT = process.env.PORT || 3000;
 

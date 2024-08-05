@@ -1,5 +1,5 @@
-const weatherRepository = require('../repositories/weather');
-const cacheService = require('./cache');
+const weatherRepository = require('../repositories/weather-repository');
+const cacheService = require('./cache-service');
 
 class WeatherService {
   async getWeather(latitude, longitude) {

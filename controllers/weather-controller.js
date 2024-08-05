@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const weatherService = require('../services/weather');
-const cacheService = require('../services/cache');
+const weatherService = require('../services/weather-service');
+const cacheService = require('../services/cache-service');
 
 /**
  * @swagger
