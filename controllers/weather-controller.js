@@ -8,6 +8,7 @@ const cacheService = require('../services/cache-service');
  * /weather:
  *   get:
  *     summary: Получить данные о погоде
+ *     description: Метод проверяет, есть ли данные с заданными параметрами широты и долготы местоположения в кеше. Если данных в кеше нет, запрашивает данные из внешнего API, сохраняет в кеш и возвращает их. Если данные в кеше найдены, возвращает данные непосредственно из кеша. Если размер кеша превышен, удаляется самый первый добавленный элемент.
  *     parameters:
  *       - in: query
  *         name: latitude
@@ -47,6 +48,7 @@ router.get('/', async (req, res, next) => {
  * /weather/cache:
  *   delete:
  *     summary: Очистить кеш
+ *     description: Метод очищает все данные, которые были сохранены в кеш.
  *     responses:
  *       200:
  *         description: Кеш очищен
@@ -67,6 +69,7 @@ router.delete('/cache', (req, res, next) => {
  * /weather/cache/size:
  *   post:
  *     summary: Установить размер кеша
+ *     description: Метод устанавливает максимальное количество элементов, которые могут храниться в кеше.
  *     requestBody:
  *       required: true
  *       content:
@@ -102,9 +105,23 @@ router.post('/cache/size', (req, res, next) => {
  * /weather/cache/status:
  *   get:
  *     summary: Получить статус кеша
+ *     description: Возвращает информацию о текущем состоянии кеша — текущий и максимальный размеры кеша.
  *     responses:
  *       200:
  *         description: Статус кеша
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 size:
+ *                   type: number
+ *                   example: 0
+ *                   description: Текущий размер кеша
+ *                 maxSize:
+ *                   type: number
+ *                   example: 100
+ *                   description: Максимальный размер кеша
  *       500:
  *         description: Внутренняя ошибка сервера
  */
