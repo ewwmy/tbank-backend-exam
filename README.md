@@ -30,9 +30,17 @@ curl "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&curr
 
 ## Установка и запуск
 
-```
+```bash
 npm i
 npm run start
+```
+
+## ESLint
+
+Найти и исправить проблемы в коде с помощью ESLint:
+
+```bash
+npm run lint-fix
 ```
 
 ## Порядок работы
