@@ -5,7 +5,7 @@ class WeatherService {
   async getWeather(latitude, longitude) {
     const d = new Date()
     // Временная метка с "округлением" до часа
-    const timestamp = `${d.getFullYear()}${d.getMonth()}${d.getDate()}${d.getHours()}` 
+    const timestamp = `${d.getFullYear()}${d.getMonth()}${d.getDate()}${d.getHours()}`
     const cacheKey = `${latitude},${longitude},${timestamp}`
     let cachedData = cacheService.get(cacheKey)
     if (cachedData) {
