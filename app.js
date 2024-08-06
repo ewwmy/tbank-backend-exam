@@ -1,8 +1,9 @@
-const express = require('express')
-const swaggerUi = require('swagger-ui-express')
-const swaggerJsdoc = require('swagger-jsdoc')
-const routes = require('./routes')
-const errorHandler = require('./middleware/error-handler')
+import express from 'express'
+import swaggerUi from 'swagger-ui-express'
+import swaggerJsdoc from 'swagger-jsdoc'
+import routes from './routes.js'
+import errorHandler from './middleware/error-handler.js'
+
 const app = express()
 const PORT = process.env.PORT || 3000
 

@@ -1,5 +1,5 @@
-const weatherRepository = require('../repositories/weather-repository')
-const cacheService = require('./cache-service')
+import weatherRepository from '../repositories/weather-repository.js'
+import cacheService from './cache-service.js'
 
 class WeatherService {
   async getWeather(latitude, longitude) {
@@ -21,4 +21,4 @@ class WeatherService {
   }
 }
 
-module.exports = new WeatherService()
+export default new WeatherService()

@@ -1,7 +1,8 @@
-const express = require('express')
+import express from 'express'
+import weatherService from '../services/weather-service.js'
+import cacheService from '../services/cache-service.js'
+
 const router = express.Router()
-const weatherService = require('../services/weather-service')
-const cacheService = require('../services/cache-service')
 
 /**
  * @swagger
@@ -143,4 +144,4 @@ router.get('/cache/status', (req, res, next) => {
   }
 })
 
-module.exports = router
+export default router
