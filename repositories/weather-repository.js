@@ -1,5 +1,5 @@
-const axios = require('axios')
-const settings = require('../config/settings')
+import axios from 'axios'
+import settings from '../config/settings.js'
 
 class WeatherRepository {
   async fetchWeather(latitude, longitude) {
@@ -19,4 +19,4 @@ class WeatherRepository {
   }
 }
 
-module.exports = new WeatherRepository()
+export default new WeatherRepository()

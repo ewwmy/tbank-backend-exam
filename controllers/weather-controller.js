@@ -1,14 +1,15 @@
-const express = require('express')
+import express from 'express'
+import weatherService from '../services/weather-service.js'
+import cacheService from '../services/cache-service.js'
+
 const router = express.Router()
-const weatherService = require('../services/weather-service')
-const cacheService = require('../services/cache-service')
 
 /**
  * @swagger
  * /weather:
  *   get:
  *     summary: Получить данные о погоде
- *     description: Метод проверяет, есть ли данные с заданными параметрами широты и долготы местоположения в кеше. Если данных в кеше нет, запрашивает данные из внешнего API, сохраняет в кеш и возвращает их. Если данные в кеше найдены, возвращает данные непосредственно из кеша. Если размер кеша превышен, удаляется самый первый добавленный элемент.
+ *     description: Метод проверяет, есть ли данные с заданными параметрами широты, долготы местоположения, а также временной метки в кеше. Если данных в кеше нет, запрашивает данные из внешнего API, сохраняет в кеш и возвращает их. Если данные в кеше найдены, возвращает данные непосредственно из кеша. Если размер кеша превышен, удаляется самый первый добавленный элемент.
  *     parameters:
  *       - in: query
  *         name: latitude
@@ -143,4 +144,4 @@ router.get('/cache/status', (req, res, next) => {
   }
 })
 
-module.exports = router
+export default router
